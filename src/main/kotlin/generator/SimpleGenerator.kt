@@ -70,7 +70,7 @@ class SimpleGenerator() {
         if (sections.size != 3) {
             throw IllegalStateException("Invalid result: $content")
         }
-        return GeneratorResult(sections[0], sections[1], sections[2])
+        return GeneratorResult(sections[0].trim(), sections[1].trim(), sections[2].trim())
     }
 
     companion object {
