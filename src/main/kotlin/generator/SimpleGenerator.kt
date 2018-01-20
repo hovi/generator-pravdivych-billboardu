@@ -5,7 +5,7 @@ val simples = arrayOf(
         "<loving-header> +++ Tato země je naše!",
         "Srdcem +++ za lidi, rozumem za republiku",
         "<loving-header> +++ Zeman říká vždycky pravdu!",
-        "<loving-header> Nestydím se za prezidenta!"
+        "<loving-header> +++ Nestydím se za prezidenta!"
         )
 
 
@@ -38,7 +38,7 @@ val patrioticLine = arrayOf(
 val lovingFooter = arrayOf(
         "Volte Zemana!",
         "Nevolte Drahoše!",
-        "Zeman na hrad!",
+        "Zeman na Hrad!",
         "Zeman znovu!"
 )
 
