@@ -1,9 +1,15 @@
 package generator.data
 
-import generator.SimpleGenerator
 
+val images = arrayOf(
+        "drsny.gif",
+        "prekvapeny.png",
+        "recnicky.png",
+        "vyjukany.png",
+        "vysmaty.png"
+)
 
-private val simples = arrayOf(
+val commonSimples = arrayOf(
         "<loving-header> +++ Tato země je naše!",
         "Srdcem +++ za lidi, \nrozumem za republiku",
         "<loving-header> +++ Zeman říká \n vždycky pravdu!",
@@ -57,13 +63,13 @@ val commonStop = arrayOf(
         "lžím, strachu a\n nenávisti",
         "Moskvě a\n Kremlu",
         "hlupákům a\n omezencům",
-        "starým strukturám"
+        "starým strukturám",
+        "<bad-guys> a\\n <bad-guys>"
 )
 
 val commonContent = """
 
 content = <simples> +++ <footer>
-content = Stop +++ <bad-guys> a\n <bad-guys> +++ <footer>
 content = Stop +++ <stop> +++\n<footer>
 content = <loving-header> +++ Volí ho i\n <respected-people> +++ <footer>
 

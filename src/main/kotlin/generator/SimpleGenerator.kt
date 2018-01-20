@@ -2,6 +2,7 @@ package generator
 
 import generator.data.ZemanMameRadi
 import generator.data.ZemanNeMameRadi
+import generator.data.images
 
 
 class SimpleGenerator() {
@@ -70,7 +71,7 @@ class SimpleGenerator() {
         if (sections.size != 3) {
             throw IllegalStateException("Invalid result: $content")
         }
-        return GeneratorResult(sections[0].trim(), sections[1].trim(), sections[2].trim())
+        return GeneratorResult(sections[0].trim(), sections[1].trim(), sections[2].trim(), foto = images.getRandomElement())
     }
 
     companion object {
@@ -83,4 +84,4 @@ class SimpleGenerator() {
 }
 
 
-data class GeneratorResult(val header: String, val content: String, val footer: String)
+data class GeneratorResult(val header: String, val content: String, val footer: String, val foto: String)
