@@ -5,6 +5,8 @@
     <title>Generátor pravdivých billboardů</title>
     <script src="lib/js/textFit.js"></script>
     <script src="lib/js/require.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         body, html {
             font-family: Arial;
@@ -12,7 +14,7 @@
             padding: 0;
         }
 
-        .background-frame{
+        .background-frame {
             border: 0.2rem solid red;
             position: absolute;
             left: 0.5rem;
@@ -29,17 +31,28 @@
             max-width: 177.78vh;
             margin: auto;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .billboard {
+            height: 100%;
+            width: 100%;
         }
 
         .picture {
-            position: relative;
-            height: 100%;
-            max-width: 50%;
-            background-image: url("img/zeman/hodny_pan.png");
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            background-image: url("img/zeman/Zly_zeman.gif");
             background-size: contain;
             background-repeat: no-repeat;
             background-position: left bottom;
         }
+
         .text {
             font-weight: bold;
             text-align: center;
@@ -51,36 +64,72 @@
             width: 50%;
             right: 5%;
         }
+
         .header {
             top: 5%;
             height: 15%;
         }
+
         .content {
             top: 25%;
             height: 40%;
             line-height: 1.5;
             vertical-align: middle;
         }
+
         .footer {
             bottom: 10%;
             height: 20%;
             color: red;
         }
+
+        button {
+            font-size: 2rem;
+        }
+
+        #form-wrap {
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+        .generated #form-wrap {
+            right: 0;
+            left: initial;
+        }
     </style>
 </head>
 <body>
 <div class="wrap">
-    <div class="background-frame"></div>
-    <div class="picture"></div>
-    <div class="header text" id="header"></div>
-    <div class="content text" id="content"></div>
-    <div class="footer text" id="footer"></div>
+    <div class="billboard" id="billboard" style="display: none;">
+        <div class="background-frame"></div>
+        <div class="picture"></div>
+        <div class="header text" id="header"></div>
+        <div class="content text" id="content"></div>
+        <div class="footer text" id="footer"></div>
+    </div>
+
+</div>
+<div id="form-wrap" class="card" style="padding: 2rem;">
+    <fieldset>
+        <legend>Pana prezidenta:</legend>
+        <label><input type="radio" name="laska" value="mame_radi" checked="true"/> Mám rád</label>
+        <br/>
+        <label><input type="radio" name="laska" value="nemame_radi"/> Nemám rád</label>
+        <br/>
+        <div class="btn-group" role="group" style="width: 100%;">
+            <button class="btn btn-block btn-primary" onclick="generate()">Generovat</button>
+            <button class="btn btn-secondary">?</button>
+        </div>
+    </fieldset>
 </div>
 <script>
     function fixFont() {
         textFit(document.getElementsByClassName('text'), {});
     }
-    fixFont()
+
     window.onresize = fixFont
 
     requirejs.config({
@@ -91,19 +140,26 @@
     });
 
     requirejs(["generator"], function (generator) {
-        window.GENERATOR = generator.generator.SimpleGenerator.Companion.DEFAULT
-        generate()
+        window.GENERATOR = {
+            "mame_radi": generator.generator.SimpleGenerator.Companion.ZEMAN_NAME_RADI,
+            "nemame_radi": generator.generator.SimpleGenerator.Companion.ZEMAN_NENAME_RADI,
+        }
     });
 
     var header = document.getElementById("header");
     var content = document.getElementById("content");
     var footer = document.getElementById("footer");
+    var billboard = document.getElementById("billboard");
+    var formWrap = document.getElementById("form-wrap");
 
     function generate() {
-        var result = window.GENERATOR.generate()
+        document.body.classList.add("generated")
+        var type = document.querySelector('input[name="laska"]:checked').value;
+        var result = window.GENERATOR[type].generate()
         header.innerText = result.header;
         content.innerText = result.content;
         footer.innerText = result.footer;
+        billboard.style.display = "block";
         fixFont()
     }
 </script>
