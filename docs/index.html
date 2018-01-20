@@ -95,9 +95,15 @@
             right: 0;
             top: 0;
         }
+        #direct-link {
+            display: none;
+        }
         .generated #form-wrap {
             right: 0;
             left: initial;
+        }
+        .generated #direct-link {
+            display: block;
         }
     </style>
 </head>
@@ -123,6 +129,7 @@
             <button class="btn btn-block btn-primary" onclick="generate()">Generovat</button>
             <button class="btn btn-secondary">?</button>
         </div>
+        <a id="direct-link" href="">Přímý odkaz na aktuální billboard</a>
     </fieldset>
 </div>
 <script>
@@ -151,17 +158,50 @@
     var footer = document.getElementById("footer");
     var billboard = document.getElementById("billboard");
     var formWrap = document.getElementById("form-wrap");
+    var directLink = document.getElementById("direct-link");
+
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
 
     function generate() {
-        document.body.classList.add("generated")
         var type = document.querySelector('input[name="laska"]:checked').value;
         var result = window.GENERATOR[type].generate()
+        display(result)
+    }
+
+    function display(result) {
+        document.body.classList.add("generated")
         header.innerText = result.header;
         content.innerText = result.content;
         footer.innerText = result.footer;
         billboard.style.display = "block";
         fixFont()
+        var query = "?header=" + encodeURIComponent(result.header) +
+            "&content=" + encodeURIComponent(result.content) +
+            "&footer=" + encodeURIComponent(result.footer);
+        var url = ("https://hovi.github.io/generator-pravdivych-billboardu/" + query);
+        directLink.href = url;
     }
+
+    function checkInitialOne() {
+        if (getParameterByName("header").length > 0) {
+            display({
+                header: getParameterByName("header"),
+                content: getParameterByName("content"),
+                footer: getParameterByName("footer")
+
+            })
+        }
+    }
+
+    window.onload = checkInitialOne;
 </script>
 </body>
 </html>

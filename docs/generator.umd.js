@@ -96,7 +96,15 @@
     if (sections.size !== 3) {
       throw new IllegalStateException('Invalid result: ' + content);
     }
-    return new GeneratorResult(sections.get_za3lpa$(0), sections.get_za3lpa$(1), sections.get_za3lpa$(2));
+    var $receiver = sections.get_za3lpa$(0);
+    var tmp$;
+    var tmp$_0 = trim(Kotlin.isCharSequence(tmp$ = $receiver) ? tmp$ : throwCCE()).toString();
+    var $receiver_0 = sections.get_za3lpa$(1);
+    var tmp$_1;
+    var tmp$_2 = trim(Kotlin.isCharSequence(tmp$_1 = $receiver_0) ? tmp$_1 : throwCCE()).toString();
+    var $receiver_1 = sections.get_za3lpa$(2);
+    var tmp$_3;
+    return new GeneratorResult(tmp$_0, tmp$_2, trim(Kotlin.isCharSequence(tmp$_3 = $receiver_1) ? tmp$_3 : throwCCE()).toString());
   };
   function SimpleGenerator$Companion() {
     SimpleGenerator$Companion_instance = this;
