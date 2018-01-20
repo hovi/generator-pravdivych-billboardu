@@ -1,6 +1,7 @@
 package generator
 
-import generator.data.Zeman
+import generator.data.ZemanMameRadi
+import generator.data.ZemanNeMameRadi
 
 
 class SimpleGenerator() {
@@ -74,8 +75,9 @@ class SimpleGenerator() {
 
     companion object {
 
-        val ZEMAN = Zeman.generate()
-        val DEFAULT = ZEMAN
+        val ZEMAN_NAME_RADI = ZemanMameRadi.generate()
+        val ZEMAN_NENAME_RADI = ZemanNeMameRadi.generate()
+        val DEFAULT = ZEMAN_NAME_RADI
 
     }
 }

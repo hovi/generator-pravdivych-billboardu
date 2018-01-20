@@ -15,8 +15,16 @@ class GeneratorTest {
     }
 
     @Test
-    fun generateTest() {
-        val simpleGenerator = SimpleGenerator.DEFAULT
+    fun generateTestMameRadi() {
+        val simpleGenerator = SimpleGenerator.ZEMAN_NAME_RADI
+        for (i in 1..1000) {
+            println(simpleGenerator.generate())
+        }
+    }
+
+    @Test
+    fun generateTestNeMameRadi() {
+        val simpleGenerator = SimpleGenerator.ZEMAN_NENAME_RADI
         for (i in 1..1000) {
             println(simpleGenerator.generate())
         }
