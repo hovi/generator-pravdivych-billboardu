@@ -1,62 +1,7 @@
 package generator
 
+import generator.data.Zeman
 
-val simples = arrayOf(
-        "<loving-header> +++ Tato země je naše!",
-        "Srdcem +++ za lidi, rozumem za republiku",
-        "<loving-header> +++ Zeman říká vždycky pravdu!",
-        "<loving-header> +++ Nestydím se za prezidenta!"
-        )
-
-
-val respectedPeople = arrayOf(
-        "Martin Konvička",
-        "František Ringo Čech",
-        "Tereza Pergnerová",
-        "Dan Hůlka"
-)
-
-val badGuys = arrayOf(
-        "imigrantům",
-        "Drahošovi",
-        "mimozemšťanům",
-        "islámu",
-        "podnikatelům",
-        "kavárníkům",
-        "Kalouskovi",
-        "chemtrails"
-)
-
-val patrioticLine = arrayOf(
-        "Tato země\n je naše!",
-        "Zemi si vzít\n nenecháme!",
-        "Proti islámu!",
-        "Za naše děti!"
-)
-
-
-val lovingFooter = arrayOf(
-        "Volte Zemana!",
-        "Nevolte Drahoše!",
-        "Zeman na Hrad!",
-        "Zeman znovu!"
-)
-
-val lovingHeader = arrayOf(
-        "Náš prezident",
-        "Srdcem"
-)
-
-val content = """
-content = <simples> +++ <footer>
-content = Stop +++ <bad-guys> a\n <bad-guys> +++ <footer>
-content = Stop +++ lžím, strachu a\n nenávisti +++\n<footer>
-content = <loving-header> +++ Volí ho i\n <respected-people> +++ <footer>
-
-
-footer =  <loving-footer> | <patriotic-line>
-
-"""
 
 class SimpleGenerator() {
     val keys = mutableMapOf<String, List<String>>()
@@ -101,7 +46,7 @@ class SimpleGenerator() {
     }
 
     fun evaluateKey(key: String): String {
-        if (! keys.containsKey(key)) {
+        if (!keys.containsKey(key)) {
             throw IllegalArgumentException("Key not found: $key")
         }
         return evaluate(keys[key]!!.getRandomElement())
@@ -120,7 +65,7 @@ class SimpleGenerator() {
 
     fun generate(): GeneratorResult {
         val content = evaluateKey("content")
-        val sections =  content.split("+++")
+        val sections = content.split("+++")
         if (sections.size != 3) {
             throw IllegalStateException("Invalid result: $content")
         }
@@ -129,20 +74,9 @@ class SimpleGenerator() {
 
     companion object {
 
-        val DEFAULT = generateDefault()
+        val ZEMAN = Zeman.generate()
+        val DEFAULT = ZEMAN
 
-        fun generateDefault (): SimpleGenerator {
-            val simpleGenerator = SimpleGenerator()
-            simpleGenerator.add("test", "tested")
-            simpleGenerator.add("simples", simples)
-            simpleGenerator.add("loving-footer", lovingFooter)
-            simpleGenerator.add("loving-header", lovingHeader)
-            simpleGenerator.add("respected-people", respectedPeople)
-            simpleGenerator.add("bad-guys", badGuys)
-            simpleGenerator.add("patriotic-line", patrioticLine)
-            simpleGenerator.add(content)
-            return simpleGenerator
-        }
     }
 }
 
