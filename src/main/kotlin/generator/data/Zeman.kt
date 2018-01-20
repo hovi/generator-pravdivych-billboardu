@@ -22,7 +22,7 @@ val respectedPeople = arrayOf(
         "Zdeněk Troška",
         "SPD",
         "Tomio Okamura",
-        "ANO",
+        "ANO"
 )
 
 val badGuys = arrayOf(
@@ -53,10 +53,7 @@ val badGuys = arrayOf(
         "důstojnosti",
         "fotbalovým fanouškům",
         "vegetariánům",
-        "veganům",
-        
-        
-        
+        "veganům"
 )
 
 val patrioticLine = arrayOf(
@@ -67,7 +64,7 @@ val patrioticLine = arrayOf(
         "Za naše pejsky!",
         "Svou zemi vám nedáme!",
         "Za Vysočinu!",
-        "Za Bechera!",
+        "Za Bechera!"
 )
 
 
@@ -82,7 +79,7 @@ val lovingFooter = arrayOf(
         "Volte \nMažňáka!",
         "Losnu \nnebo Mažňáka",
         "Volte \nBažňáka!",
-        "Volte \nkrále Vysočiny!",
+        "Volte \nkrále Vysočiny!"
 )
 
 val lovingHeader = arrayOf(
@@ -90,7 +87,7 @@ val lovingHeader = arrayOf(
         "Srdcem",
         "Rozumem",
         "Citečky",
-        "Nemyslete!",
+        "Nemyslete!"
 )
 
 val content = """
