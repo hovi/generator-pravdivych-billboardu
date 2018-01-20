@@ -22,7 +22,8 @@ val respectedPeople = arrayOf(
         "Zdeněk Troška",
         "SPD",
         "Tomio Okamura",
-        "ANO"
+        "ANO",
+        "Karel Hovorka",
 )
 
 val badGuys = arrayOf(
