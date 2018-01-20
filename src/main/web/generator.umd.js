@@ -104,7 +104,7 @@
     var tmp$_2 = trim(Kotlin.isCharSequence(tmp$_1 = $receiver_0) ? tmp$_1 : throwCCE()).toString();
     var $receiver_1 = sections.get_za3lpa$(2);
     var tmp$_3;
-    return new GeneratorResult(tmp$_0, tmp$_2, trim(Kotlin.isCharSequence(tmp$_3 = $receiver_1) ? tmp$_3 : throwCCE()).toString());
+    return new GeneratorResult(tmp$_0, tmp$_2, trim(Kotlin.isCharSequence(tmp$_3 = $receiver_1) ? tmp$_3 : throwCCE()).toString(), getRandomElement(images));
   };
   function SimpleGenerator$Companion() {
     SimpleGenerator$Companion_instance = this;
@@ -129,10 +129,11 @@
     simpleName: 'SimpleGenerator',
     interfaces: []
   };
-  function GeneratorResult(header, content, footer) {
+  function GeneratorResult(header, content, footer, foto) {
     this.header = header;
     this.content = content;
     this.footer = footer;
+    this.foto = foto;
   }
   GeneratorResult.$metadata$ = {
     kind: Kind_CLASS,
@@ -148,21 +149,25 @@
   GeneratorResult.prototype.component3 = function () {
     return this.footer;
   };
-  GeneratorResult.prototype.copy_6hosri$ = function (header, content, footer) {
-    return new GeneratorResult(header === void 0 ? this.header : header, content === void 0 ? this.content : content, footer === void 0 ? this.footer : footer);
+  GeneratorResult.prototype.component4 = function () {
+    return this.foto;
+  };
+  GeneratorResult.prototype.copy_w74nik$ = function (header, content, footer, foto) {
+    return new GeneratorResult(header === void 0 ? this.header : header, content === void 0 ? this.content : content, footer === void 0 ? this.footer : footer, foto === void 0 ? this.foto : foto);
   };
   GeneratorResult.prototype.toString = function () {
-    return 'GeneratorResult(header=' + Kotlin.toString(this.header) + (', content=' + Kotlin.toString(this.content)) + (', footer=' + Kotlin.toString(this.footer)) + ')';
+    return 'GeneratorResult(header=' + Kotlin.toString(this.header) + (', content=' + Kotlin.toString(this.content)) + (', footer=' + Kotlin.toString(this.footer)) + (', foto=' + Kotlin.toString(this.foto)) + ')';
   };
   GeneratorResult.prototype.hashCode = function () {
     var result = 0;
     result = result * 31 + Kotlin.hashCode(this.header) | 0;
     result = result * 31 + Kotlin.hashCode(this.content) | 0;
     result = result * 31 + Kotlin.hashCode(this.footer) | 0;
+    result = result * 31 + Kotlin.hashCode(this.foto) | 0;
     return result;
   };
   GeneratorResult.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.header, other.header) && Kotlin.equals(this.content, other.content) && Kotlin.equals(this.footer, other.footer)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.header, other.header) && Kotlin.equals(this.content, other.content) && Kotlin.equals(this.footer, other.footer) && Kotlin.equals(this.foto, other.foto)))));
   };
   function getRandomElement($receiver) {
     return $receiver[nextInt($receiver.length)];
@@ -170,7 +175,8 @@
   function getRandomElement_0($receiver) {
     return $receiver.get_za3lpa$(nextInt($receiver.size));
   }
-  var simples;
+  var images;
+  var commonSimples;
   var commonRespectedPeople;
   var commonBadGuys;
   var commonPatrioticLine;
@@ -178,7 +184,7 @@
   var commonLovingHeader;
   var commonStop;
   var commonContent;
-  var simples_0;
+  var simples;
   var respectedPeople;
   var badGuys;
   var patrioticLine;
@@ -192,7 +198,7 @@
   ZemanMameRadi.prototype.generate = function () {
     var simpleGenerator = new SimpleGenerator();
     simpleGenerator.add_puj7f4$('test', 'tested');
-    simpleGenerator.add_c1kmwu$('simples', simples_0);
+    simpleGenerator.add_c1kmwu$('simples', simples);
     simpleGenerator.add_c1kmwu$('loving-footer', lovingFooter);
     simpleGenerator.add_c1kmwu$('loving-header', lovingHeader);
     simpleGenerator.add_c1kmwu$('respected-people', respectedPeople);
@@ -214,7 +220,7 @@
     }
     return ZemanMameRadi_instance;
   }
-  var simples_1;
+  var simples_0;
   var respectedPeople_0;
   var badGuys_0;
   var patrioticLine_0;
@@ -228,7 +234,7 @@
   ZemanNeMameRadi.prototype.generate = function () {
     var simpleGenerator = new SimpleGenerator();
     simpleGenerator.add_puj7f4$('test', 'tested');
-    simpleGenerator.add_c1kmwu$('simples', simples_1);
+    simpleGenerator.add_c1kmwu$('simples', simples_0);
     simpleGenerator.add_c1kmwu$('loving-footer', lovingFooter_0);
     simpleGenerator.add_c1kmwu$('loving-header', lovingHeader_0);
     simpleGenerator.add_c1kmwu$('respected-people', respectedPeople_0);
@@ -264,6 +270,16 @@
   package$generator.getRandomElement_4b5429$ = getRandomElement;
   package$generator.getRandomElement_2p1efm$ = getRandomElement_0;
   var package$data = package$generator.data || (package$generator.data = {});
+  Object.defineProperty(package$data, 'images', {
+    get: function () {
+      return images;
+    }
+  });
+  Object.defineProperty(package$data, 'commonSimples', {
+    get: function () {
+      return commonSimples;
+    }
+  });
   Object.defineProperty(package$data, 'commonRespectedPeople', {
     get: function () {
       return commonRespectedPeople;
@@ -307,27 +323,28 @@
   });
   var package$compat = _.compat || (_.compat = {});
   package$compat.nextInt_za3lpa$ = nextInt;
-  simples = ['<loving-header> +++ Tato zem\u011B je na\u0161e!', 'Srdcem +++ za lidi, \nrozumem za republiku', '<loving-header> +++ Zeman \u0159\xEDk\xE1 \n v\u017Edycky pravdu!', '<loving-header> +++ Nestyd\xEDm se \n za prezidenta!'];
+  images = ['drsny.gif', 'prekvapeny.png', 'recnicky.png', 'vyjukany.png', 'vysmaty.png'];
+  commonSimples = ['<loving-header> +++ Tato zem\u011B je na\u0161e!', 'Srdcem +++ za lidi, \nrozumem za republiku', '<loving-header> +++ Zeman \u0159\xEDk\xE1 \n v\u017Edycky pravdu!', '<loving-header> +++ Nestyd\xEDm se \n za prezidenta!'];
   commonRespectedPeople = ['Martin Konvi\u010Dka', 'Franti\u0161ek Ringo \u010Cech', 'Tereza Pergnerov\xE1', 'Dan H\u016Flka', 'Andrej Babi\u0161', 'Va\u0161e babi\u010Dka', 'KS\u010CM', 'Zden\u011Bk Tro\u0161ka', 'SPD', 'Tomio Okamura', 'ANO'];
   commonBadGuys = ['imigrant\u016Fm', 'Draho\u0161ovi', 'isl\xE1mu'];
   commonPatrioticLine = ['Tato zem\u011B\n je na\u0161e!', 'Zemi si vz\xEDt\n nenech\xE1me!', 'Proti \nisl\xE1mu!', 'Za na\u0161e d\u011Bti!', 'Svou zemi v\xE1m ned\xE1me!'];
   commonLovingFooter = ['Volte \nZemana!', 'Nevolte \nDraho\u0161e!', 'Zeman \nna Hrad!', 'Zeman \nznovu!'];
   commonLovingHeader = ['N\xE1\u0161 prezident', 'Srdcem', 'Rozumem'];
-  commonStop = ['l\u017E\xEDm, strachu a\n nen\xE1visti', 'Moskv\u011B a\n Kremlu', 'hlup\xE1k\u016Fm a\n omezenc\u016Fm', 'star\xFDm struktur\xE1m'];
-  commonContent = '\n\ncontent = <simples> +++ <footer>\ncontent = Stop +++ <bad-guys> a\\n <bad-guys> +++ <footer>\ncontent = Stop +++ <stop> +++\\n<footer>\ncontent = <loving-header> +++ Vol\xED ho i\\n <respected-people> +++ <footer>\n\nfooter =  <loving-footer> | <patriotic-line>\n\n';
-  simples_0 = ['<loving-header> +++ Tato zem\u011B je na\u0161e!', 'Srdcem +++ za lidi, \nrozumem za republiku', '<loving-header> +++ Zeman \u0159\xEDk\xE1 \n v\u017Edycky pravdu!', '<loving-header> +++ Nestyd\xEDm se \n za prezidenta!'];
+  commonStop = ['l\u017E\xEDm, strachu a\n nen\xE1visti', 'Moskv\u011B a\n Kremlu', 'hlup\xE1k\u016Fm a\n omezenc\u016Fm', 'star\xFDm struktur\xE1m', '<bad-guys> a\\n <bad-guys>'];
+  commonContent = '\n\ncontent = <simples> +++ <footer>\ncontent = Stop +++ <stop> +++\\n<footer>\ncontent = <loving-header> +++ Vol\xED ho i\\n <respected-people> +++ <footer>\n\nfooter =  <loving-footer> | <patriotic-line>\n\n';
+  simples = commonSimples;
   respectedPeople = commonRespectedPeople;
-  var $receiver = ['imigrant\u016Fm', 'Draho\u0161ovi', 'mimozem\u0161\u0165an\u016Fm', 'isl\xE1mu', 'podnikatel\u016Fm', 'kav\xE1rn\xEDk\u016Fm', 'Kalouskovi', 'chemtrails', 'intelektu\xE1l\u016Fm', 'slu\u0161nosti', 'lidskosti', 'evangel\xEDk\u016Fm', 'novin\xE1\u0159\u016Fm', 'v\xED\u0159e', 'solidarit\u011B', 'rozumu', 'abstinent\u016Fm', 'spravedlnosti', 'soudnosti', 'T\u0159et\xED velmoci', 'Pussy Riot', 'akademik\u016Fm', 'vzd\u011Blanc\u016Fm', 'aktivist\u016Fm', 'd\u016Fstojnosti', 'fotbalov\xFDm fanou\u0161k\u016Fm', 'vegetari\xE1n\u016Fm', 'vegan\u016Fm'];
-  var elements = commonBadGuys;
-  badGuys = $receiver.concat(elements);
+  badGuys = commonBadGuys;
   patrioticLine = commonPatrioticLine;
   lovingFooter = commonLovingFooter;
   lovingHeader = commonLovingHeader;
   stop = commonStop;
   content = '\n\n\n' + commonContent;
-  simples_1 = ['<loving-header> +++ Tato zem\u011B je na\u0161e!', 'Srdcem +++ za lidi, \nrozumem za republiku', '<loving-header> +++ Zeman \u0159\xEDk\xE1 \n v\u017Edycky pravdu!', '<loving-header> +++ Nestyd\xEDm se \n za prezidenta!'];
+  simples_0 = commonSimples;
   respectedPeople_0 = commonRespectedPeople;
-  badGuys_0 = commonBadGuys;
+  var $receiver = ['mimozem\u0161\u0165an\u016Fm', 'podnikatel\u016Fm', 'kav\xE1rn\xEDk\u016Fm', 'Kalouskovi', 'chemtrails', 'intelektu\xE1l\u016Fm', 'slu\u0161nosti', 'lidskosti', 'evangel\xEDk\u016Fm', 'novin\xE1\u0159\u016Fm', 'v\xED\u0159e', 'solidarit\u011B', 'rozumu', 'abstinent\u016Fm', 'spravedlnosti', 'soudnosti', 'T\u0159et\xED velmoci', 'Pussy Riot', 'akademik\u016Fm', 'vzd\u011Blanc\u016Fm', 'aktivist\u016Fm', 'd\u016Fstojnosti', 'fotbalov\xFDm fanou\u0161k\u016Fm', 'vegetari\xE1n\u016Fm', 'vegan\u016Fm'];
+  var elements = commonBadGuys;
+  badGuys_0 = $receiver.concat(elements);
   var $receiver_0 = ['Za na\u0161e pejsky!', 'Za Vyso\u010Dinu!', 'Za Bechera!'];
   var elements_0 = commonPatrioticLine;
   patrioticLine_0 = $receiver_0.concat(elements_0);
