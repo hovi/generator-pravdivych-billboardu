@@ -437,11 +437,11 @@
   var package$compat = _.compat || (_.compat = {});
   package$compat.nextInt_za3lpa$ = nextInt;
   g = grammar(g$lambda);
-  simples = ['<loving-header> +++ Tato zem\u011B je na\u0161e!', 'Srdcem +++ za lidi, rozumem za republiku', '<loving-header> +++ Zeman \u0159\xEDk\xE1 v\u017Edycky pravdu!', '<loving-header> Nestyd\xEDm se za prezidenta!'];
+  simples = ['<loving-header> +++ Tato zem\u011B je na\u0161e!', 'Srdcem +++ za lidi, rozumem za republiku', '<loving-header> +++ Zeman \u0159\xEDk\xE1 v\u017Edycky pravdu!', '<loving-header> +++ Nestyd\xEDm se za prezidenta!'];
   respectedPeople = ['Martin Konvi\u010Dka', 'Franti\u0161ek Ringo \u010Cech', 'Tereza Pergnerov\xE1', 'Dan H\u016Flka'];
   badGuys = ['imigrant\u016Fm', 'Draho\u0161ovi', 'mimozem\u0161\u0165an\u016Fm', 'isl\xE1mu', 'podnikatel\u016Fm', 'kav\xE1rn\xEDk\u016Fm', 'Kalouskovi', 'chemtrails'];
   patrioticLine = ['Tato zem\u011B\n je na\u0161e!', 'Zemi si vz\xEDt\n nenech\xE1me!', 'Proti isl\xE1mu!', 'Za na\u0161e d\u011Bti!'];
-  lovingFooter = ['Volte Zemana!', 'Nevolte Draho\u0161e!', 'Zeman na hrad!', 'Zeman znovu!'];
+  lovingFooter = ['Volte Zemana!', 'Nevolte Draho\u0161e!', 'Zeman na Hrad!', 'Zeman znovu!'];
   lovingHeader = ['N\xE1\u0161 prezident', 'Srdcem'];
   content = '\ncontent = +++ <simples> +++ <footer>\ncontent = Stop +++ <bad-guys> a\\n <bad-guys> +++ <footer>\ncontent = Stop +++ l\u017E\xEDm, strachu a\\n nen\xE1visti +++\\n<footer>\ncontent = <loving-header> +++ Vol\xED ho i\\n <respected-people> +++ <footer>\n\n\nfooter =  <loving-footer> | <patriotic-line>\n\n';
   main([]);
