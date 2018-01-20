@@ -71,19 +71,11 @@
 </head>
 <body>
 <div class="wrap">
-    <div class="background-frame">
-
-    </div>
-    <div class="picture">
-
-    </div>
-    <div class="header text" id="header">
-        STOP
-    </div>
-    <div class="content text" id="content">Imigrantům a Drahošovi<br />Tato země je naše!</div>
-    <div class="footer text" id="footer">
-        Nevolte<br />Zemana!
-    </div>
+    <div class="background-frame"></div>
+    <div class="picture"></div>
+    <div class="header text" id="header"></div>
+    <div class="content text" id="content"></div>
+    <div class="footer text" id="footer"></div>
 </div>
 <script>
     function fixFont() {
@@ -91,13 +83,10 @@
     }
     fixFont()
     window.onresize = fixFont
-</script>
 
-<script>
     requirejs.config({
         paths: {
             kotlin: "lib/kotlinjs/kotlin",
-            mustache: "lib/js/mustache.min",
             generator: "generator.umd",
         }
     });
