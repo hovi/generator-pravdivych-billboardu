@@ -48,7 +48,7 @@ val lovingHeader = arrayOf(
 )
 
 val content = """
-content = +++ <simples> +++ <footer>
+content = <simples> +++ <footer>
 content = Stop +++ <bad-guys> a\n <bad-guys> +++ <footer>
 content = Stop +++ lžím, strachu a\n nenávisti +++\n<footer>
 content = <loving-header> +++ Volí ho i\n <respected-people> +++ <footer>

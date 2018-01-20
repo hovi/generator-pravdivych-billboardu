@@ -17,10 +17,8 @@ class GeneratorTest {
     @Test
     fun generateTest() {
         val simpleGenerator = SimpleGenerator.DEFAULT
-        for (i in 1..20) {
-            println()
+        for (i in 1..1000) {
             println(simpleGenerator.generate())
-            println()
         }
     }
 }
