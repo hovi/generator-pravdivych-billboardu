@@ -100,4 +100,17 @@ if (!jvm) {
 
     assemble.dependsOn assembleWeb
 
+    task githubio << {
+        copy {
+            from 'src/main/web'
+            into 'docs'
+        }
+    }
+
+    githubio.dependsOn clean
+
+    clean {
+        delete += fileTree('docs').include('**/*')
+    }
+
 }
