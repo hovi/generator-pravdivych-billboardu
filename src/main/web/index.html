@@ -193,7 +193,8 @@
     }
 
     function checkInitialOne() {
-        if (getParameterByName("header").length > 0) {
+        var headerValue = getParameterByName("header")
+        if (headerValue && headerValue.length > 0) {
             display({
                 header: getParameterByName("header"),
                 content: getParameterByName("content"),
