@@ -18,6 +18,7 @@
   var ensureNotNull = Kotlin.ensureNotNull;
   var plus = Kotlin.kotlin.collections.plus_mydzjv$;
   var toList = Kotlin.kotlin.collections.toList_us0mfu$;
+  var equals = Kotlin.equals;
   var replaceFirst = Kotlin.kotlin.text.replaceFirst_680rmw$;
   var IllegalStateException = Kotlin.kotlin.IllegalStateException;
   var Kind_OBJECT = Kotlin.Kind.OBJECT;
@@ -77,6 +78,8 @@
     var tmp$;
     var results = this.replacementRegex.findAll_905azu$(value);
     var evaluated = value;
+    var repetitiveReplacements = LinkedHashMap_init();
+    var maxTries = 10;
     tmp$ = results.iterator();
     while (tmp$.hasNext()) {
       var result = tmp$.next();
@@ -86,7 +89,14 @@
       var $receiver_0 = result.groupValues.get_za3lpa$(0);
       var tmp$_1;
       var group = trim(Kotlin.isCharSequence(tmp$_1 = $receiver_0) ? tmp$_1 : throwCCE()).toString();
-      evaluated = replaceFirst(evaluated, group, this.evaluateKey_61zpoe$(key));
+      var evaluatedKey = this.evaluateKey_61zpoe$(key);
+      var tryIndex = 0;
+      while (repetitiveReplacements.containsKey_11rb$(group) && equals(repetitiveReplacements.get_11rb$(group), evaluatedKey) && tryIndex < maxTries) {
+        tryIndex = tryIndex + 1 | 0;
+        evaluatedKey = this.evaluateKey_61zpoe$(key);
+      }
+      repetitiveReplacements.put_xwzc9p$(group, evaluatedKey);
+      evaluated = replaceFirst(evaluated, group, evaluatedKey);
     }
     return evaluated;
   };
@@ -325,12 +335,12 @@
   package$compat.nextInt_za3lpa$ = nextInt;
   images = ['drsny.gif', 'prekvapeny.png', 'recnicky.png', 'vyjukany.png', 'vysmaty.png'];
   commonSimples = ['<loving-header> +++ Tato zem\u011B je na\u0161e!', 'Srdcem +++ za lidi, \nrozumem za republiku', '<loving-header> +++ Zeman \u0159\xEDk\xE1 \n v\u017Edycky pravdu!', '<loving-header> +++ Nestyd\xEDm se \n za prezidenta!'];
-  commonRespectedPeople = ['Martin Konvi\u010Dka', 'Franti\u0161ek Ringo \u010Cech', 'Tereza Pergnerov\xE1', 'Dan H\u016Flka', 'Andrej Babi\u0161', 'Va\u0161e babi\u010Dka', 'KS\u010CM', 'Zden\u011Bk Tro\u0161ka', 'SPD', 'Tomio Okamura', 'ANO'];
-  commonBadGuys = ['imigrant\u016Fm', 'Draho\u0161ovi', 'isl\xE1mu'];
-  commonPatrioticLine = ['Tato zem\u011B\n je na\u0161e!', 'Zemi si vz\xEDt\n nenech\xE1me!', 'Proti \nisl\xE1mu!', 'Za na\u0161e d\u011Bti!', 'Svou zemi v\xE1m ned\xE1me!'];
+  commonRespectedPeople = ['Martin Konvi\u010Dka', 'Franti\u0161ek Ringo \u010Cech', 'Tereza Pergnerov\xE1', 'Dan H\u016Flka', 'Andrej Babi\u0161', 'Va\u0161e babi\u010Dka', 'KS\u010CM', 'Zden\u011Bk Tro\u0161ka', 'SPD', 'Tomio Okamura', 'hnut\xED ANO', 'Ji\u0159\xED K\xE1j\xEDnek', 'jeho Ov\u010D\xE1\u010Dek', 'V\xE1clav Klaus'];
+  commonBadGuys = ['imigrant\u016Fm', 'Draho\u0161ovi', 'isl\xE1mu', 'kmotr\u016Fm', 'emigrant\u016Fm', 'zlod\u011Bj\u016Fm', 'tunel\xE1\u0159\u016Fm', 'politick\xFDm dinosaur\u016Fm', 'kolaboraci', 'okupaci', 'politick\xFDm n\xE1m\u011Bstk\u016Fm', 'prostitutk\xE1m', 'narkomafii', 'lobbist\u016Fm'];
+  commonPatrioticLine = ['Tato zem\u011B\n je na\u0161e!', 'Zemi si vz\xEDt\n nenech\xE1me!', 'Proti \nisl\xE1mu!', 'Proti \nterorismu!', 'Za na\u0161e d\u011Bti!', 'Svou zemi v\xE1m ned\xE1me!', 'Rovnost, svornost,\n bratrstv\xED!'];
   commonLovingFooter = ['Volte \nZemana!', 'Nevolte \nDraho\u0161e!', 'Zeman \nna Hrad!', 'Zeman \nznovu!'];
   commonLovingHeader = ['N\xE1\u0161 prezident', 'Srdcem', 'Rozumem'];
-  commonStop = ['l\u017E\xEDm, strachu a\n nen\xE1visti', 'Moskv\u011B a\n Kremlu', 'hlup\xE1k\u016Fm a\n omezenc\u016Fm', 'star\xFDm struktur\xE1m', '<bad-guys> a\\n <bad-guys>'];
+  commonStop = ['l\u017E\xEDm, strachu a\n nen\xE1visti', 'Moskv\u011B a\n Kremlu', 'hlup\xE1k\u016Fm a\n omezenc\u016Fm', 'star\xFDm struktur\xE1m', '<bad-guys> a\n <bad-guys>'];
   commonContent = '\n\ncontent = <simples> +++ <footer>\ncontent = Stop +++ <stop> +++\\n<footer>\ncontent = <loving-header> +++ Vol\xED ho i\\n <respected-people> +++ <footer>\n\nfooter =  <loving-footer> | <patriotic-line>\n\n';
   simples = commonSimples;
   respectedPeople = commonRespectedPeople;
@@ -342,19 +352,19 @@
   content = '\n\n\n' + commonContent;
   simples_0 = commonSimples;
   respectedPeople_0 = commonRespectedPeople;
-  var $receiver = ['mimozem\u0161\u0165an\u016Fm', 'podnikatel\u016Fm', 'kav\xE1rn\xEDk\u016Fm', 'Kalouskovi', 'chemtrails', 'intelektu\xE1l\u016Fm', 'slu\u0161nosti', 'lidskosti', 'evangel\xEDk\u016Fm', 'novin\xE1\u0159\u016Fm', 'v\xED\u0159e', 'solidarit\u011B', 'rozumu', 'abstinent\u016Fm', 'spravedlnosti', 'soudnosti', 'T\u0159et\xED velmoci', 'Pussy Riot', 'akademik\u016Fm', 'vzd\u011Blanc\u016Fm', 'aktivist\u016Fm', 'd\u016Fstojnosti', 'fotbalov\xFDm fanou\u0161k\u016Fm', 'vegetari\xE1n\u016Fm', 'vegan\u016Fm'];
+  var $receiver = ['mimozem\u0161\u0165an\u016Fm', 'podnikatel\u016Fm', 'kav\xE1rn\xEDk\u016Fm', 'Kalouskovi', 'chemtrails', 'intelektu\xE1l\u016Fm', 'slu\u0161nosti', 'lidskosti', 'evangel\xEDk\u016Fm', 'novin\xE1\u0159\u016Fm', 'v\xED\u0159e', 'solidarit\u011B', 'rozumu', 'abstinent\u016Fm', 'spravedlnosti', 'soudnosti', 'T\u0159et\xED velmoci', 'Pussy Riot', 'akademik\u016Fm', 'vzd\u011Blanc\u016Fm', 'aktivist\u016Fm', 'd\u016Fstojnosti', 'fotbalov\xFDm fanou\u0161k\u016Fm', 'vegetari\xE1n\u016Fm', 'vegan\u016Fm', 'vegan\u016Fm', 'zelenin\u011B', '\u017Eidozedn\xE1\u0159\u016Fm', 'hacker\u016Fm', 'volnomy\u0161lenk\xE1\u0159\u016Fm', '\u010Destnosti', 'st\xE1tn\xEDm podnik\u016Fm', 'lenosti', 'pohodlnosti', 'zabija\u010Dk\xE1m', 'podbradk\u016Fm', 'impotent\u016Fm', 'neku\u0159\xE1k\u016Fm', 'nez\xE1vislosti', 'terorismu', 'slovensk\xE9mu pivu', 'lobotomii'];
   var elements = commonBadGuys;
   badGuys_0 = $receiver.concat(elements);
-  var $receiver_0 = ['Za na\u0161e pejsky!', 'Za Vyso\u010Dinu!', 'Za Bechera!'];
+  var $receiver_0 = ['Za na\u0161e pejsky!', 'Za Vyso\u010Dinu!', 'Za Bechera!', 'Za na\u0161e voj\xE1ky!', 'Za na\u0161e matky!', 'Za na\u0161e nesv\xE9pr\xE1vn\xE9!', 'Ku*da sem, \n ku*da tam!'];
   var elements_0 = commonPatrioticLine;
   patrioticLine_0 = $receiver_0.concat(elements_0);
-  var $receiver_1 = ['Volte \nTrumpa!', 'Volte \nKreml!', 'Volte \nLosnu!', 'Volte \nMa\u017E\u0148\xE1ka!', 'Losnu \nnebo Ma\u017E\u0148\xE1ka', 'Volte \nBa\u017E\u0148\xE1ka!', 'Volte \nkr\xE1le Vyso\u010Diny!'];
+  var $receiver_1 = ['Volte \nTrumpa!', 'Volte \nKreml!', 'Volte \nLosnu!', 'Volte \nMa\u017E\u0148\xE1ka!', 'Losnu \nnebo Ma\u017E\u0148\xE1ka', 'Volte \nBah\u0148\xE1ka!', 'Volte \nkr\xE1le Vyso\u010Diny!', 'Volte Draho\u0161e!', 'Volte m\u011B!', 'Chcete m\u011B?', 'Volte svobodu!', 'Volte demokracii!', 'Volte pravdu!'];
   var elements_1 = commonLovingFooter;
   lovingFooter_0 = $receiver_1.concat(elements_1);
-  var $receiver_2 = ['Cite\u010Dky', 'Nemyslete!'];
+  var $receiver_2 = ['Cite\u010Dky', 'Nemyslete!', 'Myslete!'];
   var elements_2 = commonLovingHeader;
   lovingHeader_0 = $receiver_2.concat(elements_2);
-  var $receiver_3 = ['hlup\xE1k\u016Fm a\n populist\u016Fm', 'vulgarit\u011B a\n dezinformaci', 'vulgarit\u011B a\n neurvalosti', 'zedn\xE1\u0159\u016Fm a\n \u0158\xEDmsk\xE9mu klubu', 'Nejedl\xE9mu, Myn\xE1\u0159ovi a\n dal\u0161\xEDm p\u0159\xE1tel\u016Fm'];
+  var $receiver_3 = ['hlup\xE1k\u016Fm a\n populist\u016Fm', 'maskot\u016Fm a\n loutk\xE1m', 'vulgarit\u011B a\n dezinformaci', 'vulgarit\u011B a\n neurvalosti', 'zedn\xE1\u0159\u016Fm a\n \u0158\xEDmsk\xE9mu klubu', 'Nejedl\xE9mu, Myn\xE1\u0159ovi a\n dal\u0161\xEDm p\u0159\xE1tel\u016Fm'];
   var elements_3 = commonStop;
   stop_0 = $receiver_3.concat(elements_3);
   content_0 = '\n\n\n' + commonContent;
