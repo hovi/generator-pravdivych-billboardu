@@ -57,10 +57,19 @@ class SimpleGenerator() {
     fun evaluate(value: String): String {
         val results = replacementRegex.findAll(value)
         var evaluated = value
+        val repetitiveReplacements = mutableMapOf<String, String>()
+        val maxTries = 10
         for (result in results) {
             val key = result.groupValues[1].trim()
             val group = result.groupValues[0].trim()
-            evaluated = evaluated.replaceFirst(group, evaluateKey(key))
+            var evaluatedKey = evaluateKey(key)
+            var tryIndex = 0
+            while (repetitiveReplacements.containsKey(group) && repetitiveReplacements[group] == evaluatedKey && tryIndex < maxTries) {
+                tryIndex += 1
+                evaluatedKey = evaluateKey(key)
+            }
+            repetitiveReplacements.put(group, evaluatedKey)
+            evaluated = evaluated.replaceFirst(group, evaluatedKey)
         }
         return evaluated
     }

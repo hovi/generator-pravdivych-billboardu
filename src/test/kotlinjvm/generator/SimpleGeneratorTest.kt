@@ -49,4 +49,26 @@ class SimpleGeneratorTest {
         val value = simpleGenerator.evaluate("<body>")
         assertEquals("value1", value)
     }
+
+    @Test
+    fun testReplacementRepeats() {
+        val simpleGenerator = SimpleGenerator()
+        simpleGenerator.addLine("body = value1")
+        simpleGenerator.addLine("body = value2")
+        for (index in 1..100) {
+            val value = simpleGenerator.evaluate("<body><body>")
+            assertTrue(value.contains("value1"))
+            assertTrue(value.contains("value2"))
+        }
+    }
+
+    @Test
+    fun testReplacementRepeatsNoDeadlock() {
+        val simpleGenerator = SimpleGenerator()
+        simpleGenerator.addLine("body = value1")
+        for (index in 1..100) {
+            val value = simpleGenerator.evaluate("<body><body>")
+            assertEquals("value1value1", value)
+        }
+    }
 }
