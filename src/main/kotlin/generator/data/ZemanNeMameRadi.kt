@@ -3,7 +3,9 @@ package generator.data
 import generator.SimpleGenerator
 
 
-private val simples = commonSimples
+private val simples = arrayOf(
+        "<loving-header> +++ Dvě brady jsou víc\n než jeden Brady!"
+) + commonSimples
 
 private val respectedPeople = commonRespectedPeople
 
@@ -95,7 +97,6 @@ private val stop = arrayOf(
 ) + commonStop
 
 private val content = """
-
 
 """ + commonContent
 
