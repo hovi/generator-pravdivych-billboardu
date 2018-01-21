@@ -32,13 +32,33 @@ private val badGuys = arrayOf(
         "důstojnosti",
         "fotbalovým fanouškům",
         "vegetariánům",
-        "veganům"
+        "veganům",
+        "zelenině",
+        "židozednářům",
+        "hackerům",
+        "volnomyšlenkářům",
+        "čestnosti",
+        "státním podnikům",
+        "lenosti",
+        "pohodlnosti",
+        "zabijačkám",
+        "podbradkům",
+        "impotentům",
+        "nekuřákům",
+        "nezávislosti",
+        "terorismu",
+        "slovenskému pivu",
+        "lobotomii",
 ) + commonBadGuys
 
 private val patrioticLine = arrayOf(
         "Za naše pejsky!",
         "Za Vysočinu!",
-        "Za Bechera!"
+        "Za Bechera!",
+        "Za naše vojáky!",
+        "Za naše matky!",
+        "Za naše nesvéprávné!",
+        "Ku*da sem, \n ku*da tam!",
 ) + commonPatrioticLine
 
 
@@ -48,17 +68,24 @@ private val lovingFooter = arrayOf(
         "Volte \nLosnu!",
         "Volte \nMažňáka!",
         "Losnu \nnebo Mažňáka",
-        "Volte \nBažňáka!",
-        "Volte \nkrále Vysočiny!"
+        "Volte \nBahňáka!",
+        "Volte \nkrále Vysočiny!",
+        "Volte Drahoše!",
+        "Volte mě!",
+        "Chcete mě?",
+        "Volte svobodu!",
+        "Volte demokracii!",
+        "Volte pravdu!",
 ) + commonLovingFooter
 
 private val lovingHeader = arrayOf(
         "Citečky",
-        "Nemyslete!"
+        "Nemyslete!",
+        "Myslete!",
 ) + commonLovingHeader
 
 private val stop = arrayOf(
-        "hlupákům a\n populistům",
+        "maskotům a\n loutkám",
         "vulgaritě a\n dezinformaci",
         "vulgaritě a\n neurvalosti",
         "zednářům a\n Římskému klubu",
