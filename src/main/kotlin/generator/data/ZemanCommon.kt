@@ -14,6 +14,8 @@ val commonSimples = arrayOf(
         "Srdcem +++ za lidi, \nrozumem za republiku",
         "<loving-header> +++ Zeman říká \n vždycky pravdu!",
         "<loving-header> +++ Nestydím se \n za prezidenta!"
+        "<loving-header> +++ Miluji \n prezidenta!",
+        "<loving-header> +++ Peroutka byl \n gentleman!",
 )
 
 
@@ -28,21 +30,37 @@ val commonRespectedPeople = arrayOf(
         "Zdeněk Troška",
         "SPD",
         "Tomio Okamura",
-        "ANO"
+        "hnutí ANO",
+        "Jiří Kájínek",
+        "jeho Ovčáček",
+        "Václav Klaus",
 )
 
 val commonBadGuys = arrayOf(
         "imigrantům",
         "Drahošovi",
-        "islámu"
+        "islámu",
+        "kmotrům",
+        "emigrantům",
+        "zlodějům",
+        "tunelářům",
+        "politickým dinosaurům",
+        "kolaboraci",
+        "okupaci",
+        "politickým náměstkům",
+        "prostitutkám",
+        "narkomafii",
+        "lobbistům",           
 )
 
 val commonPatrioticLine = arrayOf(
         "Tato země\n je naše!",
         "Zemi si vzít\n nenecháme!",
         "Proti \nislámu!",
+        "Proti \nterorismu!",
         "Za naše děti!",
         "Svou zemi vám nedáme!"
+        "Rovnost, svornost, bratrství!",
 )
 
 
@@ -63,6 +81,7 @@ val commonStop = arrayOf(
         "lžím, strachu a\n nenávisti",
         "Moskvě a\n Kremlu",
         "hlupákům a\n omezencům",
+        "hlupákům a\n populistům",
         "starým strukturám",
         "<bad-guys> a\\n <bad-guys>"
 )
