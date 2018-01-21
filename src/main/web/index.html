@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Generátor pravdivých billboardů</title>
+    <link rel="prefetch" href="img/zeman/drsny.gif" />
+    <link rel="prefetch" href="img/zeman/prekvapeny.png" />
+    <link rel="prefetch" href="img/zeman/recnicky.png" />
+    <link rel="prefetch" href="img/zeman/vyjukany.png" />
+    <link rel="prefetch" href="img/zeman/vysmaty.png" />
     <script src="lib/js/textFit.js"></script>
     <script src="lib/js/require.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -102,6 +107,9 @@
         .generated #direct-link {
             display: block;
         }
+        .generated .info {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -123,10 +131,21 @@
         <br/>
         <div class="btn-group" role="group" style="width: 100%;">
             <button class="btn btn-block btn-primary" onclick="generate()">Generovat</button>
-            <button class="btn btn-secondary">?</button>
+            <button class="btn btn-secondary" onclick="document.body.classList.remove('generated');">?</button>
         </div>
         <a id="direct-link" href="">Přímý odkaz na aktuální billboard</a>
     </fieldset>
+    <br />
+    <div class="info">
+        <p>Vygenerujte si vlastní billboard, který můžete sdílet!</p>
+        <p>Poslední dobou je pro diskutující čím dál náročnější oslovit své protivníky a přesvědčit je o svém názoru. Jednoduché heslovité nástroje jsou sice účinné, ale po čase omrzí a je pracné je vytvořit. Proto stačí využít náš generátor.</p>
+        <p>Zvolte si, jestli máte rádi prezidenta Zemana nebo ne, a vše ostatní už za vás udělá!</p>
+        <p>Upozorňujeme, že tento projekt nemá za cíl někoho pošpinit, ale chce recesistickou formou poukázat na některé nevhodné a negativně laděné kampaně.
+            Texty jsou založené na existujících heslech z internetu. Inspirací byl také <a href="https://jiri-kremser.github.io/nahodny-slusny-cech/">náhodný slušný čech</a>.</p>
+        <p>
+        Chcete-li přispět svými hesly, můžete udělat pull request nebo komentář na <a href="https://github.com/hovi/generator-pravdivych-billboardu">githubu</a>.
+        </p>
+    </div>
 </div>
 <script>
     function fixFont() {
@@ -183,7 +202,9 @@
         fixFont()
         var query = "?header=" + encodeURIComponent(result.header) +
             "&content=" + encodeURIComponent(result.content) +
-            "&footer=" + encodeURIComponent(result.footer);
+            "&footer=" + encodeURIComponent(result.footer) +
+            "&foto=" + encodeURIComponent(result.foto) +
+                "";
         var url = ("https://hovi.github.io/generator-pravdivych-billboardu/" + query);
         directLink.href = url;
     }
