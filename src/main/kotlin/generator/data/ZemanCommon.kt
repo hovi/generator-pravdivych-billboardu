@@ -64,7 +64,7 @@ val commonStop = arrayOf(
         "Moskvě a\n Kremlu",
         "hlupákům a\n omezencům",
         "starým strukturám",
-        "<bad-guys> a\\n <bad-guys>"
+        "<bad-guys> a\n <bad-guys>"
 )
 
 val commonContent = """
